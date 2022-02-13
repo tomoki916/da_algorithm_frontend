@@ -3,13 +3,13 @@ import { Layout } from '../../components/layout';
 import useSWR from 'swr';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
-import Link from '@mui/material/Link';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import FolderIcon from '@mui/icons-material/Folder';
 import { apiPath } from '../../config';
+import Link from 'next/link';
 
 export default function History() {
 
@@ -36,6 +36,7 @@ export default function History() {
           {data.map((project, index) => {
             return (
               <Link href={`/history/detail?id=${project.id}`} style={{ textDecoration: 'none', color: 'black' }}  key={`list-${index}`}>
+                <a>
                 <ListItem>
                   <ListItemIcon>
                     <FolderIcon />
@@ -44,6 +45,7 @@ export default function History() {
                     primary={project.label}
                     />
                 </ListItem>
+                </a>
               </Link>
             )})}
         </List>
